@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
+@Table(name = "cancellation",schema = "timetable")
 public class Cancellation {
     private int idCancellation;
     private int idRecord;
@@ -23,7 +24,7 @@ public class Cancellation {
     }
 
     @Basic
-    @Column(name = "id_record", nullable = false)
+    @Column(name = "id_record", nullable = false,insertable = false,updatable = false)
     public int getIdRecord() {
         return idRecord;
     }

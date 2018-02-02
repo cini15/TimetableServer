@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
+@Table(name = "`group`",schema = "timetable")
 public class Group {
     private short idGroup;
     private String nameGroup;
@@ -36,7 +37,7 @@ public class Group {
     }
 
     @Basic
-    @Column(name = "id_flow", nullable = true)
+    @Column(name = "id_flow", nullable = true,insertable = false,updatable = false)
     public Short getIdFlow() {
         return idFlow;
     }
@@ -46,7 +47,7 @@ public class Group {
     }
 
     @Basic
-    @Column(name = "id_faculty", nullable = false)
+    @Column(name = "id_faculty", nullable = false,insertable = false,updatable = false)
     public byte getIdFaculty() {
         return idFaculty;
     }

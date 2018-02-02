@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
+@Table(name = "classroom",schema = "timetable")
 public class Classroom {
     private short idClassroom;
     private short number;

@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
+@Table(name = "record",schema = "timetable")
 public class Record {
     private int idRecord;
     private byte weekNumber;
@@ -68,7 +69,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "id_group", nullable = false)
+    @Column(name = "id_group", nullable = false,insertable = false,updatable = false)
     public short getIdGroup() {
         return idGroup;
     }
@@ -78,7 +79,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "id_subject", nullable = false)
+    @Column(name = "id_subject", nullable = false,insertable = false,updatable = false)
     public short getIdSubject() {
         return idSubject;
     }
@@ -88,7 +89,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "id_lecturer", nullable = false)
+    @Column(name = "id_lecturer", nullable = false,insertable = false,updatable = false)
     public short getIdLecturer() {
         return idLecturer;
     }
@@ -98,7 +99,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "id_subject_type", nullable = false)
+    @Column(name = "id_subject_type", nullable = false,insertable = false,updatable = false)
     public byte getIdSubjectType() {
         return idSubjectType;
     }
@@ -108,7 +109,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "id_subject_for", nullable = false)
+    @Column(name = "id_subject_for", nullable = false,insertable = false,updatable = false)
     public byte getIdSubjectFor() {
         return idSubjectFor;
     }
@@ -138,7 +139,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "id_classroom", nullable = false)
+    @Column(name = "id_classroom", nullable = false,insertable = false,updatable = false)
     public short getIdClassroom() {
         return idClassroom;
     }

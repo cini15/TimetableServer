@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
+@Table(name ="flow" ,schema = "timetable")
 public class Flow {
     private short idFlow;
     private String name;

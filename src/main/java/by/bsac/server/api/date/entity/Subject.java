@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
+@Table(name = "subject",schema = "timetable")
 public class Subject {
     private short idSubject;
     private String nameSubject;
@@ -35,7 +36,7 @@ public class Subject {
     }
 
     @Basic
-    @Column(name = "id_chair", nullable = false)
+    @Column(name = "id_chair", nullable = false,insertable = false,updatable = false)
     public byte getIdChair() {
         return idChair;
     }
