@@ -2,6 +2,7 @@ package by.bsac.server.api.server;
 
 
 import by.bsac.server.api.date.dto.FacultyDTO;
+import by.bsac.server.api.date.entity.Record;
 import by.bsac.server.api.servise.TimetableServise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,5 +34,11 @@ public class ApiServerTimetableController {
         List<FacultyDTO> list= timetable.getFacultyList();
 
         return ResponseEntity.ok().body(list);
+    }
+    @GetMapping(value ="/records")
+    public ResponseEntity<List<Record>> getRecordsList(){
+
+        List <Record> records=timetable.getRecordsList();
+        return ResponseEntity.ok().body(records);
     }
 }
