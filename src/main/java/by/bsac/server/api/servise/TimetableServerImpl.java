@@ -2,13 +2,16 @@ package by.bsac.server.api.servise;
 
 
 import by.bsac.server.api.date.dto.FacultyDTO;
+import by.bsac.server.api.date.dto.GroupDTO;
 import by.bsac.server.api.date.entity.Faculty;
+import by.bsac.server.api.date.entity.Group;
+import by.bsac.server.api.date.entity.Record;
 import by.bsac.server.api.servise.dao.TimetableDAO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class TimetableServerImpl implements TimetableServise {
@@ -22,41 +25,46 @@ public class TimetableServerImpl implements TimetableServise {
 
     @Override
     public List<FacultyDTO> getFacultyList() {
-        final List<Faculty> listFaculty = timetableDAO.getListFaculty();
+        final Collection<Faculty> listFaculty = timetableDAO.getListFacultyAndGroups();
 
 
         List<FacultyDTO> facultyDTOS=new ArrayList<>();
-        for (Faculty fac:listFaculty) {
-         //   System.out.println(  fac);
-        }
         
-        for (int i=0 ; i<listFaculty.size();i++) {
+        for (Faculty faculty:listFaculty) {
             FacultyDTO dto=new FacultyDTO();
-            dto.setNameFaculty(listFaculty
-                    .get(i)
+
+            dto.setNameFaculty(faculty
                     .getNameFaculty());
-            dto.setIdFaculty(listFaculty
-                    .get(i)
+            dto.setIdFaculty(faculty
                     .getIdFaculty());
 
-//            List<GroupDTO> groupDTOS=new ArrayList<>();
-//            List<Group> listGroup=timetableDAO.getLisGroup();
-//            for (Group group: listGroup) {
-//                GroupDTO groupDTO = new GroupDTO();
-//                groupDTO.setIdGroup(group.getIdGroup());
-//                groupDTO.setNameGroup(group.getNameGroup());
-//                groupDTO.setEduLevel(group.getEduLevel());
-//                groupDTO.setIdFaculty(group.getIdFaculty());
-//                groupDTO.setIdFlow(group.getIdFlow());
-//                groupDTOS.add(groupDTO);
+            Collection<GroupDTO> groupDTOS=new HashSet<GroupDTO>();
+            Set<Group> listGroup= new HashSet<>( faculty.getGroupsByIdFaculty());
+            for (Group group: listGroup) {
+                GroupDTO groupDTO = new GroupDTO();
+                groupDTO.setIdGroup(group.getIdGroup());
+                groupDTO.setNameGroup(group.getNameGroup());
+                groupDTO.setEduLevel(group.getEduLevel());
+                groupDTO.setIdFaculty(group.getIdFaculty());
+                groupDTO.setIdFlow(group.getIdFlow());
+                groupDTOS.add(groupDTO);
 
-//            }
-//            dto.setGroupsByIdFaculty(groupDTOS);
+            }
+            dto.setGroupsByIdFaculty(groupDTOS);
             facultyDTOS.add(dto);
 
 
         }
 
+
         return facultyDTOS;
+    }
+
+    @Override
+    public List<Record> getRecordsList() {
+        List<Record> records= new ArrayList<>();
+        List<Record> test= (List<Record>) timetableDAO.getListRecords();
+
+        return records;
     }
 }

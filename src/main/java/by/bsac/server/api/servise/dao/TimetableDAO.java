@@ -1,11 +1,15 @@
 package by.bsac.server.api.servise.dao;
 
+import by.bsac.server.api.date.entity.Chair;
 import by.bsac.server.api.date.entity.Faculty;
-import by.bsac.server.api.date.entity.Group;
 
+import by.bsac.server.api.date.entity.Record;
+
+import java.util.Collection;
 import java.util.List;
 
 public interface TimetableDAO {
-    public List<Faculty> getListFaculty();
-    public List<Group> getLisGroup();
+    public Collection<Faculty> getListFacultyAndGroups();
+    public Collection<Record> getListRecords();
+    public Collection<Chair> getLisChairs();
 }

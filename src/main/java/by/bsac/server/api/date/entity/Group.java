@@ -1,5 +1,7 @@
 package by.bsac.server.api.date.entity;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -86,6 +88,7 @@ public class Group {
 
     @ManyToOne
     @JoinColumn(name = "id_flow", referencedColumnName = "id_flow")
+
     public Flow getFlowByIdFlow() {
         return flowByIdFlow;
     }
@@ -104,7 +107,7 @@ public class Group {
         this.facultyByIdFaculty = facultyByIdFaculty;
     }
 
-    @OneToMany(mappedBy = "groupByIdGroup")
+    @OneToMany(mappedBy = "groupByIdGroup",fetch = FetchType.LAZY)
     public Collection<Record> getRecordsByIdGroup() {
         return recordsByIdGroup;
     }
