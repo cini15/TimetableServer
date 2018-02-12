@@ -1,19 +1,11 @@
 package by.bsac.server.api.servise.dao;
 
-import by.bsac.server.api.date.entity.Chair;
-import by.bsac.server.api.date.entity.Faculty;
-import by.bsac.server.api.date.entity.Group;
-import by.bsac.server.api.date.entity.Record;
-import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
+import by.bsac.server.api.date.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -36,10 +28,13 @@ public class TimetableDAOImpl implements TimetableDAO {
 
         Session session = sessionFactory.openSession();
 
-        Query<Faculty> q = session.createQuery("SELECT  f from Faculty f left join fetch f.groupsByIdFaculty gr left join fetch gr.flowByIdFlow",Faculty.class);
+        Query<Faculty> q = session.createQuery(
+                "SELECT  f from Faculty f " +
+                "left join fetch f.groupsByIdFaculty gr " +
+                "left join fetch gr.flowByIdFlow",Faculty.class);
 
-
-        faculties =new HashSet<>(q.list());
+        List<Faculty> list=q.getResultList();
+        faculties =new HashSet<>(list);
 
         session.close();
 
@@ -48,23 +43,50 @@ public class TimetableDAOImpl implements TimetableDAO {
 
     @Override
     public Collection<Record> getListRecords() {
-        Collection <Record> list;
+        Collection <Record> records;
 
         Session session = sessionFactory.openSession();
 
-        Query<Record> q=session.createQuery("select r from Record r " +
-                "left join fetch r.classroomByIdClassroom " +
-                "left join fetch r.subjectForByIdSubjectFor " +
-                "left join fetch r.subjectTypeByIdSubjectType " +
-                "left join fetch r.cancellationsByIdRecord",Record.class);
+        Query<Record> q=session.createQuery(
+                "select r from Record r " +
+                "inner join fetch r.classroomByIdClassroom " +
+                "inner join fetch r.subjectForByIdSubjectFor " +
+                "inner join fetch r.subjectTypeByIdSubjectType " +
+                "left join fetch r.cancellationsByIdRecord "
+                ,Record.class);
 
-        list=new HashSet<>(q.list());
+        List<Record> list=q.list();
+
+        records=new HashSet<>(list);
         session.close();
-        return list;
+        return records;
     }
 
     @Override
-    public Collection<Chair> getLisChairs() {
+    public Collection<Chair> getLisChairsAndLecturers() {
+        Collection<Chair> chairs;
+
+        Session session=sessionFactory.openSession();
+        Query<Chair> q=session.createQuery(
+                "select ch from Chair ch " +
+                 "inner join fetch ch.lecturersByIdChair"
+                ,Chair.class);
+
+        List<Chair> list=  q.getResultList();
+
+        session.close();
+        return null;
+    }
+
+    @Override
+    public Collection<Subject> getListSubjects() {
+        Session session=sessionFactory.openSession();
+
+        Query<Subject>q=session.createQuery("select sub from Subject sub",Subject.class);
+
+        List<Subject> subjects=q.list();
+
+        session.close();
         return null;
     }
 }

@@ -47,7 +47,7 @@ public class Chair {
         return Objects.hash(idChair, nameChair);
     }
 
-    @OneToMany(mappedBy = "chairByIdChair")
+    @OneToMany(mappedBy = "chairByIdChair",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     public Collection<Lecturer> getLecturersByIdChair() {
         return lecturersByIdChair;
     }
@@ -56,7 +56,7 @@ public class Chair {
         this.lecturersByIdChair = lecturersByIdChair;
     }
 
-    @OneToMany(mappedBy = "chairByIdChair")
+    @OneToMany(mappedBy = "chairByIdChair",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     public Collection<Subject> getSubjectsByIdChair() {
         return subjectsByIdChair;
     }

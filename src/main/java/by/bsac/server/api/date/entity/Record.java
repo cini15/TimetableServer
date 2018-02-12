@@ -182,7 +182,7 @@ public class Record {
         this.cancellationsByIdRecord = cancellationsByIdRecord;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_group", referencedColumnName = "id_group", nullable = false)
     public Group getGroupByIdGroup() {
         return groupByIdGroup;
@@ -192,7 +192,7 @@ public class Record {
         this.groupByIdGroup = groupByIdGroup;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_subject", referencedColumnName = "id_subject", nullable = false)
     public Subject getSubjectByIdSubject() {
         return subjectByIdSubject;
@@ -202,7 +202,7 @@ public class Record {
         this.subjectByIdSubject = subjectByIdSubject;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_lecturer", referencedColumnName = "id_lecturer", nullable = false)
     public Lecturer getLecturerByIdLecturer() {
         return lecturerByIdLecturer;

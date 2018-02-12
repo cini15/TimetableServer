@@ -1,7 +1,10 @@
 package by.bsac.server.api.server;
 
 
+import by.bsac.server.api.date.TransformEntityToDTO;
+import by.bsac.server.api.date.dto.ChairDTO;
 import by.bsac.server.api.date.dto.FacultyDTO;
+import by.bsac.server.api.date.dto.RecordDTO;
 import by.bsac.server.api.date.entity.Record;
 import by.bsac.server.api.servise.TimetableServise;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,7 @@ import java.util.List;
 public class ApiServerTimetableController {
 
 
+
     @Autowired()
     private TimetableServise timetable;
 
@@ -25,6 +29,8 @@ public class ApiServerTimetableController {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test() {
+        long usedBytes = Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+
         return "test";
     }
 
@@ -36,9 +42,19 @@ public class ApiServerTimetableController {
         return ResponseEntity.ok().body(list);
     }
     @GetMapping(value ="/records")
-    public ResponseEntity<List<Record>> getRecordsList(){
+    public ResponseEntity<List<RecordDTO>> getRecordsList(){
 
-        List <Record> records=timetable.getRecordsList();
+        List <RecordDTO> records=timetable.getRecordsList();
+//        long usedBytes = Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+//        System.out.println(usedBytes + " ");
+
         return ResponseEntity.ok().body(records);
+    }
+
+    @GetMapping(value ="/chairs")
+    public ResponseEntity<List<ChairDTO>> getChairsList(){
+
+        List <ChairDTO> chairDTOS=timetable.getChairsList();
+        return ResponseEntity.ok().body(chairDTOS);
     }
 }
