@@ -6,9 +6,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
+
+import java.util.*;
 
 @Repository
 public class TimetableDAOImpl implements TimetableDAO {
@@ -34,7 +33,7 @@ public class TimetableDAOImpl implements TimetableDAO {
                 "left join fetch gr.flowByIdFlow",Faculty.class);
 
         List<Faculty> list=q.getResultList();
-        faculties =new HashSet<>(list);
+        faculties =new LinkedHashSet<>(list);
 
         session.close();
 
@@ -49,15 +48,15 @@ public class TimetableDAOImpl implements TimetableDAO {
 
         Query<Record> q=session.createQuery(
                 "select r from Record r " +
-                "inner join fetch r.classroomByIdClassroom " +
-                "inner join fetch r.subjectForByIdSubjectFor " +
-                "inner join fetch r.subjectTypeByIdSubjectType " +
+                "left join fetch r.classroomByIdClassroom " +
+                "left join fetch r.subjectForByIdSubjectFor " +
+                "left join fetch r.subjectTypeByIdSubjectType " +
                 "left join fetch r.cancellationsByIdRecord "
                 ,Record.class);
 
         List<Record> list=q.list();
 
-        records=new HashSet<>(list);
+        records=new LinkedHashSet<>(list);
         session.close();
         return records;
     }
@@ -68,25 +67,16 @@ public class TimetableDAOImpl implements TimetableDAO {
 
         Session session=sessionFactory.openSession();
         Query<Chair> q=session.createQuery(
-                "select ch from Chair ch " +
-                 "inner join fetch ch.lecturersByIdChair"
+                "select ch from Chair ch "
                 ,Chair.class);
 
         List<Chair> list=  q.getResultList();
 
+        chairs=new LinkedHashSet<>(list);
         session.close();
-        return null;
+
+        return chairs;
     }
 
-    @Override
-    public Collection<Subject> getListSubjects() {
-        Session session=sessionFactory.openSession();
 
-        Query<Subject>q=session.createQuery("select sub from Subject sub",Subject.class);
-
-        List<Subject> subjects=q.list();
-
-        session.close();
-        return null;
-    }
 }

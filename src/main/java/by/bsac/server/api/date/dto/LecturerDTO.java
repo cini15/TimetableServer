@@ -3,25 +3,26 @@ package by.bsac.server.api.date.dto;
 
 
 
-import java.util.Collection;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 
 public class LecturerDTO{
 
     private short idLecturer;
     private String nameLecturer;
     private byte idChair;
-    private ChairDTO chairByIdChair;
-    private Collection<RecordDTO> recordsByIdLecture;
 
     public LecturerDTO() {
     }
 
-    public LecturerDTO(short idLecturer, String nameLecturer, byte idChair, ChairDTO chairByIdChair, Collection<RecordDTO> recordsByIdLecture) {
+    public LecturerDTO(short idLecturer, String nameLecturer, byte idChair) {
         this.idLecturer = idLecturer;
         this.nameLecturer = nameLecturer;
         this.idChair = idChair;
-        this.chairByIdChair = chairByIdChair;
-        this.recordsByIdLecture = recordsByIdLecture;
+
     }
 
     public short getIdLecturer() {
@@ -48,19 +49,4 @@ public class LecturerDTO{
         this.idChair = idChair;
     }
 
-    public ChairDTO getChairByIdChair() {
-        return chairByIdChair;
-    }
-
-    public void setChairByIdChair(ChairDTO chairByIdChair) {
-        this.chairByIdChair = chairByIdChair;
-    }
-
-    public Collection<RecordDTO> getRecordsByIdLecture() {
-        return recordsByIdLecture;
-    }
-
-    public void setRecordsByIdLecture(Collection<RecordDTO> recordsByIdLecture) {
-        this.recordsByIdLecture = recordsByIdLecture;
-    }
 }

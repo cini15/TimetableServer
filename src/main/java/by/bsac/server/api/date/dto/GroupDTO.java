@@ -17,8 +17,6 @@ public class GroupDTO {
     private byte idFaculty;
     private byte eduLevel;
     private FlowDTO flowByIdFlow;
-    private FacultyDTO facultyByIdFaculty;
-    private Collection<RecordDTO> recordsByIdGroup;
 
     public short getIdGroup() {
         return idGroup;
@@ -68,19 +66,4 @@ public class GroupDTO {
         this.flowByIdFlow = flowByIdFlow;
     }
 
-    public FacultyDTO getFacultyByIdFaculty() {
-        return facultyByIdFaculty;
-    }
-
-    public void setFacultyByIdFaculty(FacultyDTO facultyByIdFaculty) {
-        this.facultyByIdFaculty = facultyByIdFaculty;
-    }
-
-    public Collection<RecordDTO> getRecordsByIdGroup() {
-        return recordsByIdGroup;
-    }
-
-    public void setRecordsByIdGroup(Collection<RecordDTO> recordsByIdGroup) {
-        this.recordsByIdGroup = recordsByIdGroup;
-    }
 }

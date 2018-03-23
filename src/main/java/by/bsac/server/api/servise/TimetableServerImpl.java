@@ -54,12 +54,12 @@ public class TimetableServerImpl implements TimetableServise {
     public List<ChairDTO> getChairsList() {
 
         Collection<Chair> chairs=timetableDAO.getLisChairsAndLecturers();
-        return null;
+
+        List<ChairDTO> chairDTOS;
+
+        chairDTOS=transformEntityToDTO.getListChairDTO(chairs);
+        return chairDTOS;
     }
 
-    @Override
-    public List<SubjectDTO> getSubjects() {
-        Collection<Subject> subjects;
-        return null;
-    }
+
 }

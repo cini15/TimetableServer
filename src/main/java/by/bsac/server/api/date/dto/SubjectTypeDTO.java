@@ -1,20 +1,22 @@
 package by.bsac.server.api.date.dto;
 
 
-import java.util.Collection;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.Collection;
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SubjectTypeDTO {
     private byte id;
     private String name;
-    private Collection<RecordDTO> recordsById;
 
     public SubjectTypeDTO() {
     }
 
-    public SubjectTypeDTO(byte id, String name, Collection<RecordDTO> recordsById) {
+    public SubjectTypeDTO(byte id, String name) {
         this.id = id;
         this.name = name;
-        this.recordsById = recordsById;
     }
 
     public byte getId() {
@@ -33,11 +35,4 @@ public class SubjectTypeDTO {
         this.name = name;
     }
 
-    public Collection<RecordDTO> getRecordsById() {
-        return recordsById;
-    }
-
-    public void setRecordsById(Collection<RecordDTO> recordsById) {
-        this.recordsById = recordsById;
-    }
 }

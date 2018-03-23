@@ -2,22 +2,25 @@ package by.bsac.server.api.date.dto;
 
 
 
-import java.sql.Date;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.sql.Date;
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CancellationDTO {
 
     private int idCancellation;
     private int idRecord;
     private Date dateTo;
     private Date dateFrom;
-    private RecordDTO recordByIdRecord;
 
-    public CancellationDTO(int idCancellation, int idRecord, Date dateTo, Date dateFrom, RecordDTO recordByIdRecord) {
+    public CancellationDTO(int idCancellation, int idRecord, Date dateTo, Date dateFrom) {
         this.idCancellation = idCancellation;
         this.idRecord = idRecord;
         this.dateTo = dateTo;
         this.dateFrom = dateFrom;
-        this.recordByIdRecord = recordByIdRecord;
+
     }
 
     public CancellationDTO() {
@@ -55,11 +58,4 @@ public class CancellationDTO {
         this.dateFrom = dateFrom;
     }
 
-    public RecordDTO getRecordByIdRecord() {
-        return recordByIdRecord;
-    }
-
-    public void setRecordByIdRecord(RecordDTO recordByIdRecord) {
-        this.recordByIdRecord = recordByIdRecord;
-    }
 }

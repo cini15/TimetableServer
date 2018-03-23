@@ -1,9 +1,13 @@
 package by.bsac.server.api.date.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.sql.Date;
 import java.util.Collection;
-
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class RecordDTO {
 
     private int idRecord;
@@ -18,10 +22,6 @@ public class RecordDTO {
     private Date dateFrom;
     private Date dateTo;
     private short idClassroom;
-    private Collection<CancellationDTO> cancellationsByIdRecord;
-    private GroupDTO groupByIdGroup;
-    private SubjectDTO subjectByIdSubject;
-    private LecturerDTO lecturerByIdLecturer;
     private SubjectTypeDTO subjectTypeByIdSubjectType;
     private SubjectForDTO subjectForByIdSubjectFor;
     private ClassroomDTO classroomByIdClassroom;
@@ -29,7 +29,7 @@ public class RecordDTO {
     public RecordDTO() {
     }
 
-    public RecordDTO(int idRecord, byte weekNumber, byte weekDay, byte subjOrdinalNumber, short idGroup, short idSubject, short idLecturer, byte idSubjectType, byte idSubjectFor, Date dateFrom, Date dateTo, short idClassroom, Collection<CancellationDTO> cancellationsByIdRecord, GroupDTO groupByIdGroup, SubjectDTO subjectByIdSubject, LecturerDTO lecturerByIdLecturer, SubjectTypeDTO subjectTypeByIdSubjectType, SubjectForDTO subjectForByIdSubjectFor, ClassroomDTO classroomByIdClassroom) {
+    public RecordDTO(int idRecord, byte weekNumber, byte weekDay, byte subjOrdinalNumber, short idGroup, short idSubject, short idLecturer, byte idSubjectType, byte idSubjectFor, Date dateFrom, Date dateTo, short idClassroom,  SubjectTypeDTO subjectTypeByIdSubjectType, SubjectForDTO subjectForByIdSubjectFor, ClassroomDTO classroomByIdClassroom) {
         this.idRecord = idRecord;
         this.weekNumber = weekNumber;
         this.weekDay = weekDay;
@@ -42,10 +42,6 @@ public class RecordDTO {
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
         this.idClassroom = idClassroom;
-        this.cancellationsByIdRecord = cancellationsByIdRecord;
-        this.groupByIdGroup = groupByIdGroup;
-        this.subjectByIdSubject = subjectByIdSubject;
-        this.lecturerByIdLecturer = lecturerByIdLecturer;
         this.subjectTypeByIdSubjectType = subjectTypeByIdSubjectType;
         this.subjectForByIdSubjectFor = subjectForByIdSubjectFor;
         this.classroomByIdClassroom = classroomByIdClassroom;
@@ -147,37 +143,7 @@ public class RecordDTO {
         this.idClassroom = idClassroom;
     }
 
-    public Collection<CancellationDTO> getCancellationsByIdRecord() {
-        return cancellationsByIdRecord;
-    }
 
-    public void setCancellationsByIdRecord(Collection<CancellationDTO> cancellationsByIdRecord) {
-        this.cancellationsByIdRecord = cancellationsByIdRecord;
-    }
-
-    public GroupDTO getGroupByIdGroup() {
-        return groupByIdGroup;
-    }
-
-    public void setGroupByIdGroup(GroupDTO groupByIdGroup) {
-        this.groupByIdGroup = groupByIdGroup;
-    }
-
-    public SubjectDTO getSubjectByIdSubject() {
-        return subjectByIdSubject;
-    }
-
-    public void setSubjectByIdSubject(SubjectDTO subjectByIdSubject) {
-        this.subjectByIdSubject = subjectByIdSubject;
-    }
-
-    public LecturerDTO getLecturerByIdLecturer() {
-        return lecturerByIdLecturer;
-    }
-
-    public void setLecturerByIdLecturer(LecturerDTO lecturerByIdLecturer) {
-        this.lecturerByIdLecturer = lecturerByIdLecturer;
-    }
 
     public SubjectTypeDTO getSubjectTypeByIdSubjectType() {
         return subjectTypeByIdSubjectType;

@@ -8,15 +8,13 @@ public class FlowDTO {
 
     private short idFlow;
     private String name;
-    private Collection<GroupDTO> groupsByIdFlow;
 
     public FlowDTO() {
     }
 
-    public FlowDTO(short idFlow, String name, Collection<GroupDTO> groupsByIdFlow) {
+    public FlowDTO(short idFlow, String name) {
         this.idFlow = idFlow;
         this.name = name;
-        this.groupsByIdFlow = groupsByIdFlow;
     }
 
     public short getIdFlow() {
@@ -35,11 +33,4 @@ public class FlowDTO {
         this.name = name;
     }
 
-    public Collection<GroupDTO> getGroupsByIdFlow() {
-        return groupsByIdFlow;
-    }
-
-    public void setGroupsByIdFlow(Collection<GroupDTO> groupsByIdFlow) {
-        this.groupsByIdFlow = groupsByIdFlow;
-    }
 }

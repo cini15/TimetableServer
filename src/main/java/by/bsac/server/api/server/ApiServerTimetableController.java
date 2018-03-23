@@ -29,7 +29,7 @@ public class ApiServerTimetableController {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test() {
-        long usedBytes = Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+
 
         return "test";
     }
@@ -38,16 +38,12 @@ public class ApiServerTimetableController {
     public ResponseEntity<List<FacultyDTO>> facultyList(){
 
         List<FacultyDTO> list= timetable.getFacultyList();
-
         return ResponseEntity.ok().body(list);
     }
     @GetMapping(value ="/records")
     public ResponseEntity<List<RecordDTO>> getRecordsList(){
 
         List <RecordDTO> records=timetable.getRecordsList();
-//        long usedBytes = Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-//        System.out.println(usedBytes + " ");
-
         return ResponseEntity.ok().body(records);
     }
 

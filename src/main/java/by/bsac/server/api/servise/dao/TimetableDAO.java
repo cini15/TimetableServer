@@ -13,5 +13,5 @@ public interface TimetableDAO {
     public Collection<Faculty> getListFacultyAndGroups();
     public Collection<Record> getListRecords();
     public Collection<Chair> getLisChairsAndLecturers();
-    public Collection<Subject> getListSubjects();
+
 }

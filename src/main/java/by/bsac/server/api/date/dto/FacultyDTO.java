@@ -15,6 +15,15 @@ public class FacultyDTO {
     @JsonProperty("groups")
     private Collection<GroupDTO> groupsByIdFaculty=new ArrayList<>();
 
+    public FacultyDTO() {
+    }
+
+    public FacultyDTO(byte idFaculty, String nameFaculty, Collection<GroupDTO> groupsByIdFaculty) {
+        this.idFaculty = idFaculty;
+        this.nameFaculty = nameFaculty;
+        this.groupsByIdFaculty = groupsByIdFaculty;
+    }
+
     public byte getIdFaculty() {
         return idFaculty;
     }

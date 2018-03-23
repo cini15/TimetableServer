@@ -1,27 +1,29 @@
 package by.bsac.server.api.date.dto;
 
-import java.util.Collection;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.Collection;
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SubjectDTO {
     private short idSubject;
     private String nameSubject;
     private byte idChair;
     private byte eduLevel;
     private String abnameSubject;
-    private Collection<RecordDTO> recordsByIdSubject;
-    private ChairDTO chairByIdChair;
+
 
     public SubjectDTO() {
     }
 
-    public SubjectDTO(short idSubject, String nameSubject, byte idChair, byte eduLevel, String abnameSubject, Collection<RecordDTO> recordsByIdSubject, ChairDTO chairByIdChair) {
+    public SubjectDTO(short idSubject, String nameSubject, byte idChair, byte eduLevel, String abnameSubject) {
         this.idSubject = idSubject;
         this.nameSubject = nameSubject;
         this.idChair = idChair;
         this.eduLevel = eduLevel;
         this.abnameSubject = abnameSubject;
-        this.recordsByIdSubject = recordsByIdSubject;
-        this.chairByIdChair = chairByIdChair;
+
     }
 
     public short getIdSubject() {
@@ -64,19 +66,4 @@ public class SubjectDTO {
         this.abnameSubject = abnameSubject;
     }
 
-    public Collection<RecordDTO> getRecordsByIdSubject() {
-        return recordsByIdSubject;
-    }
-
-    public void setRecordsByIdSubject(Collection<RecordDTO> recordsByIdSubject) {
-        this.recordsByIdSubject = recordsByIdSubject;
-    }
-
-    public ChairDTO getChairByIdChair() {
-        return chairByIdChair;
-    }
-
-    public void setChairByIdChair(ChairDTO chairByIdChair) {
-        this.chairByIdChair = chairByIdChair;
-    }
 }

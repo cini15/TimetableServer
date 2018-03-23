@@ -12,6 +12,6 @@ public interface TimetableServise {
     public List<FacultyDTO>getFacultyList();
     public List<RecordDTO> getRecordsList();
     public List<ChairDTO> getChairsList();
-    public List<SubjectDTO> getSubjects();
+
 
 }

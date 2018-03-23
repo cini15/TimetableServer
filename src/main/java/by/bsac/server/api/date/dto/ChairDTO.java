@@ -2,13 +2,20 @@ package by.bsac.server.api.date.dto;
 
 
 
-import java.util.Collection;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Collection;
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ChairDTO {
 
     private byte idChair;
     private String nameChair;
+    @JsonProperty("lecturers")
     private Collection<LecturerDTO> lecturersByIdChair;
+    @JsonProperty("subjects")
     private Collection<SubjectDTO> subjectsByIdChair;
 
     public ChairDTO(byte idChair, String nameChair, Collection<LecturerDTO> lecturersByIdChair, Collection<SubjectDTO> subjectsByIdChair) {

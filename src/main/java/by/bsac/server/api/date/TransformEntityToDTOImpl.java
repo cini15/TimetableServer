@@ -79,27 +79,24 @@ public class TransformEntityToDTOImpl implements TransformEntityToDTO{
             classroomDTO.setNumber(entity.getClassroomByIdClassroom().getNumber());
             recordDTO.setClassroomByIdClassroom(classroomDTO);
 
-
-
-
-
             recordDTOS.add(recordDTO);
-
-
         }
-
-
 
         return recordDTOS;
     }
 
     @Override
     public List<ChairDTO> getListChairDTO(Collection<Chair> chairs) {
-        return null;
+        List<ChairDTO> chairDTOS=new ArrayList<ChairDTO>();
+
+        for (Chair chair:chairs) {
+
+
+
+        }
+
+        return chairDTOS;
     }
 
-    @Override
-    public List<SubjectDTO> getListSubjectDTO(Collection<Subject> subjects) {
-        return null;
-    }
+
 }

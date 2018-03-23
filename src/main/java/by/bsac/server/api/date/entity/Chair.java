@@ -1,5 +1,8 @@
 package by.bsac.server.api.date.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -47,7 +50,8 @@ public class Chair {
         return Objects.hash(idChair, nameChair);
     }
 
-    @OneToMany(mappedBy = "chairByIdChair",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "chairByIdChair",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     public Collection<Lecturer> getLecturersByIdChair() {
         return lecturersByIdChair;
     }
@@ -56,7 +60,8 @@ public class Chair {
         this.lecturersByIdChair = lecturersByIdChair;
     }
 
-    @OneToMany(mappedBy = "chairByIdChair",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "chairByIdChair",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     public Collection<Subject> getSubjectsByIdChair() {
         return subjectsByIdChair;
     }
