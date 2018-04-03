@@ -14,7 +14,6 @@ public class TransformEntityToDTOImpl implements TransformEntityToDTO{
 
         List<FacultyDTO> facultyDTOS =new ArrayList<>();
 
-
         for (Faculty faculty:faculties) {
             FacultyDTO dto = new FacultyDTO();
 
@@ -79,10 +78,24 @@ public class TransformEntityToDTOImpl implements TransformEntityToDTO{
             classroomDTO.setNumber(entity.getClassroomByIdClassroom().getNumber());
             recordDTO.setClassroomByIdClassroom(classroomDTO);
 
+            List<CancellationDTO> cancellationDTOS=new ArrayList<>();
+            for (Cancellation cancellation:entity.getCancellationsByIdRecord()) {
+                CancellationDTO cancellationDTO= new CancellationDTO();
+                cancellationDTO.setIdCancellation(cancellation.getIdCancellation());
+                cancellationDTO.setIdRecord(cancellation.getIdRecord());
+                cancellationDTO.setDateFrom(cancellation.getDateFrom());
+                cancellationDTO.setDateTo(cancellation.getDateTo());
+                cancellationDTOS.add(cancellationDTO);
+
+            }
+            recordDTO.setCancellationsByIdRecord(cancellationDTOS);
             recordDTOS.add(recordDTO);
         }
+        System.out.println();
 
         return recordDTOS;
+
+
     }
 
     @Override
@@ -90,9 +103,34 @@ public class TransformEntityToDTOImpl implements TransformEntityToDTO{
         List<ChairDTO> chairDTOS=new ArrayList<ChairDTO>();
 
         for (Chair chair:chairs) {
+            ChairDTO chairDTO= new ChairDTO();
+            chairDTO.setIdChair(chair.getIdChair());
+            chairDTO.setNameChair(chair.getNameChair());
 
+            List<LecturerDTO> lecturerDTOS = new ArrayList<>();
+            for (Lecturer lecturer:chair.getLecturersByIdChair()) {
+                LecturerDTO lecturerDTO=new LecturerDTO();
+                lecturerDTO.setIdLecturer(lecturer.getIdLecturer());
+                lecturerDTO.setNameLecturer(lecturer.getNameLecturer());
+                lecturerDTO.setIdChair(lecturer.getIdChair());
+                lecturerDTOS.add(lecturerDTO);
 
+            }
+            chairDTO.setLecturersByIdChair(lecturerDTOS);
 
+            List<SubjectDTO> subjectDTOS= new ArrayList<>();
+            for (Subject subject:chair.getSubjectsByIdChair()) {
+                SubjectDTO subjectDTO= new SubjectDTO();
+                subjectDTO.setIdSubject(subject.getIdSubject());
+                subjectDTO.setAbnameSubject(subject.getAbnameSubject());
+                subjectDTO.setEduLevel(subject.getEduLevel());
+                subjectDTO.setIdChair(subject.getIdChair());
+                subjectDTO.setNameSubject(subject.getNameSubject());
+                subjectDTOS.add(subjectDTO);
+            }
+            chairDTO.setSubjectsByIdChair(subjectDTOS);
+
+            chairDTOS.add(chairDTO);
         }
 
         return chairDTOS;

@@ -38,12 +38,14 @@ public class ApiServerTimetableController {
     public ResponseEntity<List<FacultyDTO>> facultyList(){
 
         List<FacultyDTO> list= timetable.getFacultyList();
+
         return ResponseEntity.ok().body(list);
     }
     @GetMapping(value ="/records")
     public ResponseEntity<List<RecordDTO>> getRecordsList(){
 
         List <RecordDTO> records=timetable.getRecordsList();
+
         return ResponseEntity.ok().body(records);
     }
 
