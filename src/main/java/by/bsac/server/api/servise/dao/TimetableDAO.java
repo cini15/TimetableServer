@@ -10,8 +10,9 @@ import java.util.Collection;
 import java.util.List;
 
 public interface TimetableDAO {
-    public Collection<Faculty> getListFacultyAndGroups();
-    public Collection<Record> getListRecords();
-    public Collection<Chair> getLisChairsAndLecturers();
+    Collection<Faculty> getListFacultyAndGroups();
+    Collection<Record> getListRecords();
+    Collection<Chair> getLisChairsAndLecturers();
+    Collection<Subject> getListSubjects();
 
 }

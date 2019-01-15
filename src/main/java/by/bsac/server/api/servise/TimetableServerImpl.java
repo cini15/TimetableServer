@@ -13,53 +13,37 @@ import java.util.*;
 public class TimetableServerImpl implements TimetableServise {
 
     @Autowired
-    private TransformEntityToDTO transformEntityToDTO;
-
-    @Autowired
     private TimetableDAO timetableDAO;
 
-    public void setTimetableDAO(TimetableDAO timetableDAO) {
-        this.timetableDAO = timetableDAO;
-    }
+    @Override
+    public Collection<Faculty> getFacultyList() {
 
-    public void setTransformEntityToDTO(TransformEntityToDTO transformEntityToDTO) {
-        this.transformEntityToDTO = transformEntityToDTO;
+        Collection<Faculty> faculty = timetableDAO.getListFacultyAndGroups();
+
+        return faculty;
     }
 
     @Override
-    public List<FacultyDTO> getFacultyList() {
-        final Collection<Faculty> listFaculty = timetableDAO.getListFacultyAndGroups();
+    public Collection<Record> getRecordsList() {
 
-        List<FacultyDTO> facultyDTOS;
-
-        facultyDTOS = transformEntityToDTO.getListFacultyDTO(listFaculty);
-
-        return facultyDTOS;
-    }
-
-    @Override
-    public List<RecordDTO> getRecordsList() {
         Collection<Record> records=timetableDAO.getListRecords();
 
-        List<RecordDTO> recordDTOS;
-
-        recordDTOS= transformEntityToDTO.getListRecordDTO(records);
-
-
-
-        return recordDTOS;
+        return records;
     }
 
     @Override
-    public List<ChairDTO> getChairsList() {
+    public Collection<Chair> getChairsList() {
 
         Collection<Chair> chairs=timetableDAO.getLisChairsAndLecturers();
 
-        List<ChairDTO> chairDTOS;
-
-        chairDTOS=transformEntityToDTO.getListChairDTO(chairs);
-        return chairDTOS;
+      return chairs;
     }
 
+    @Override
+    public Collection<Subject> getSubjectsList() {
 
+        Collection<Subject> subjects=timetableDAO.getListSubjects();
+
+        return subjects;
+    }
 }

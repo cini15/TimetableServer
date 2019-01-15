@@ -2,6 +2,7 @@ package by.bsac.server.api.config;
 
 
 import by.bsac.server.api.date.entity.*;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -19,14 +19,6 @@ import java.util.Properties;
 @ComponentScans(value = {@ComponentScan("by.bsac.server.api.date")})
 @PropertySource("classpath:db.properties")
 public class AppConfig {
-
-
-//    @Bean
-//    public SessionFactory getSessionFactory(){
-//        SessionFactory sf = new org.hibernate.cfg.Configuration().configure("/hibernate.cfg.xml").buildSessionFactory();
-//
-//        return sf;
-//    }
 
 
     @Autowired
@@ -75,6 +67,11 @@ public class AppConfig {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(getSessionFactory().getObject());
         return transactionManager;
+    }
+
+    @Bean
+    public ModelMapper getModelMapper(){
+        return new ModelMapper();
     }
 
 }

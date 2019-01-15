@@ -5,8 +5,11 @@ import by.bsac.server.api.date.TransformEntityToDTO;
 import by.bsac.server.api.date.dto.ChairDTO;
 import by.bsac.server.api.date.dto.FacultyDTO;
 import by.bsac.server.api.date.dto.RecordDTO;
-import by.bsac.server.api.date.entity.Record;
+import by.bsac.server.api.date.dto.SubjectDTO;
 import by.bsac.server.api.servise.TimetableServise;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +20,15 @@ import java.util.List;
 @RequestMapping("/api")
 public class ApiServerTimetableController {
 
+    private static final Logger log= LoggerFactory.getLogger(ApiServerTimetableController.class);
+
 
 
     @Autowired()
     private TimetableServise timetable;
+
+    @Autowired
+    private TransformEntityToDTO toDTO;
 
 
     public void setTimetable(TimetableServise timetable) {
@@ -29,30 +37,30 @@ public class ApiServerTimetableController {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test() {
-
+        log.debug("Debug TEST");
 
         return "test";
     }
 
     @GetMapping(value = "/faculty")
     public ResponseEntity<List<FacultyDTO>> facultyList(){
-
-        List<FacultyDTO> list= timetable.getFacultyList();
-
-        return ResponseEntity.ok().body(list);
+        log.debug("call function /FACULTY");
+        return ResponseEntity.ok().body(toDTO.getListFacultyDTO(timetable.getFacultyList()));
     }
     @GetMapping(value ="/records")
     public ResponseEntity<List<RecordDTO>> getRecordsList(){
-
-        List <RecordDTO> records=timetable.getRecordsList();
-
-        return ResponseEntity.ok().body(records);
+        log.debug("call function /RECORDS");
+        return ResponseEntity.ok().body(toDTO.getListRecordDTO(timetable.getRecordsList()));
     }
 
     @GetMapping(value ="/chairs")
     public ResponseEntity<List<ChairDTO>> getChairsList(){
-
-        List <ChairDTO> chairDTOS=timetable.getChairsList();
-        return ResponseEntity.ok().body(chairDTOS);
+        log.debug("call function /CHAIRS");
+        return ResponseEntity.ok().body(toDTO.getListChairDTO(timetable.getChairsList()));
+    }
+    @GetMapping(value = "/subjects")
+    public ResponseEntity<List<SubjectDTO>> getSubjects(){
+        log.debug("call function /subjects");
+        return ResponseEntity.ok().body(toDTO.getListSubjectDTO(timetable.getSubjectsList()));
     }
 }

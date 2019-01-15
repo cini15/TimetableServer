@@ -78,5 +78,21 @@ public class TimetableDAOImpl implements TimetableDAO {
         return chairs;
     }
 
+    @Override
+    public Collection<Subject> getListSubjects() {
 
+        Collection<Subject> subjects;
+        Session session=sessionFactory.openSession();
+        Query<Subject> q=session.createQuery(
+                "select su from Subject su "
+                ,Subject.class);
+
+        List<Subject> list=  q.getResultList();
+
+        subjects=new LinkedHashSet<>(list);
+        session.close();
+
+
+        return subjects;
+    }
 }
