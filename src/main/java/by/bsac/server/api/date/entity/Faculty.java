@@ -7,17 +7,17 @@ import java.util.Objects;
 @Entity
 @Table(name = "faculty",schema = "timetable")
 public class Faculty {
-    private byte idFaculty;
+    private Byte idFaculty;
     private String nameFaculty;
     private Collection<Group> groupsByIdFaculty;
 
     @Id
     @Column(name = "id_faculty", nullable = false)
-    public byte getIdFaculty() {
+    public Byte getIdFaculty() {
         return idFaculty;
     }
 
-    public void setIdFaculty(byte idFaculty) {
+    public void setIdFaculty(Byte idFaculty) {
         this.idFaculty = idFaculty;
     }
 
@@ -35,9 +35,12 @@ public class Faculty {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Faculty faculty = (Faculty) o;
-        return idFaculty == faculty.idFaculty &&
-                Objects.equals(nameFaculty, faculty.nameFaculty);
+
+        if (!idFaculty.equals(faculty.idFaculty)) return false;
+        if (!nameFaculty.equals(faculty.nameFaculty)) return false;
+        return groupsByIdFaculty.equals(faculty.groupsByIdFaculty);
     }
 
     @Override

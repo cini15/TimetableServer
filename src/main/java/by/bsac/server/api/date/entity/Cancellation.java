@@ -7,29 +7,29 @@ import java.util.Objects;
 @Entity
 @Table(name = "cancellation",schema = "timetable")
 public class Cancellation {
-    private int idCancellation;
-    private int idRecord;
+    private Integer idCancellation;
+    private Integer idRecord;
     private Date dateTo;
     private Date dateFrom;
     private Record recordByIdRecord;
 
     @Id
     @Column(name = "id_cancellation", nullable = false)
-    public int getIdCancellation() {
+    public Integer getIdCancellation() {
         return idCancellation;
     }
 
-    public void setIdCancellation(int idCancellation) {
+    public void setIdCancellation(Integer idCancellation) {
         this.idCancellation = idCancellation;
     }
 
     @Basic
     @Column(name = "id_record", nullable = false,insertable = false,updatable = false)
-    public int getIdRecord() {
+    public Integer getIdRecord() {
         return idRecord;
     }
 
-    public void setIdRecord(int idRecord) {
+    public void setIdRecord(Integer idRecord) {
         this.idRecord = idRecord;
     }
 
@@ -57,11 +57,14 @@ public class Cancellation {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Cancellation that = (Cancellation) o;
-        return idCancellation == that.idCancellation &&
-                idRecord == that.idRecord &&
-                Objects.equals(dateTo, that.dateTo) &&
-                Objects.equals(dateFrom, that.dateFrom);
+
+        if (!idCancellation.equals(that.idCancellation)) return false;
+        if (!idRecord.equals(that.idRecord)) return false;
+        if (!dateTo.equals(that.dateTo)) return false;
+        if (!dateFrom.equals(that.dateFrom)) return false;
+        return recordByIdRecord.equals(that.recordByIdRecord);
     }
 
     @Override

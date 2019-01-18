@@ -7,17 +7,17 @@ import java.util.Objects;
 @Entity
 @Table(name ="flow" ,schema = "timetable")
 public class Flow {
-    private short idFlow;
+    private Short idFlow;
     private String name;
     private Collection<Group> groupsByIdFlow;
 
     @Id
     @Column(name = "id_flow", nullable = false)
-    public short getIdFlow() {
+    public Short getIdFlow() {
         return idFlow;
     }
 
-    public void setIdFlow(short idFlow) {
+    public void setIdFlow(Short idFlow) {
         this.idFlow = idFlow;
     }
 
@@ -35,9 +35,12 @@ public class Flow {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Flow flow = (Flow) o;
-        return idFlow == flow.idFlow &&
-                Objects.equals(name, flow.name);
+
+        if (!idFlow.equals(flow.idFlow)) return false;
+        if (!name.equals(flow.name)) return false;
+        return groupsByIdFlow.equals(flow.groupsByIdFlow);
     }
 
     @Override

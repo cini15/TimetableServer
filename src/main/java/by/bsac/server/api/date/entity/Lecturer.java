@@ -7,19 +7,19 @@ import java.util.Objects;
 @Entity
 @Table(name = "lecturer",schema = "timetable")
 public class Lecturer {
-    private short idLecturer;
+    private Short idLecturer;
     private String nameLecturer;
-    private byte idChair;
+    private Byte idChair;
     private Chair chairByIdChair;
     private Collection<Record> recordsByIdLecturer;
 
     @Id
     @Column(name = "id_lecturer", nullable = false)
-    public short getIdLecturer() {
+    public Short getIdLecturer() {
         return idLecturer;
     }
 
-    public void setIdLecturer(short idLecturer) {
+    public void setIdLecturer(Short idLecturer) {
         this.idLecturer = idLecturer;
     }
 
@@ -35,11 +35,11 @@ public class Lecturer {
 
     @Basic
     @Column(name = "id_chair", nullable = false,insertable = false,updatable = false)
-    public byte getIdChair() {
+    public Byte getIdChair() {
         return idChair;
     }
 
-    public void setIdChair(byte idChair) {
+    public void setIdChair(Byte idChair) {
         this.idChair = idChair;
     }
 
@@ -48,8 +48,8 @@ public class Lecturer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Lecturer lecturer = (Lecturer) o;
-        return idLecturer == lecturer.idLecturer &&
-                idChair == lecturer.idChair &&
+        return idLecturer.equals(lecturer.idLecturer) &&
+                idChair.equals(lecturer.idChair) &&
                 Objects.equals(nameLecturer, lecturer.nameLecturer);
     }
 

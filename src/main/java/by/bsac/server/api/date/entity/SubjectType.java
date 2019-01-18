@@ -7,17 +7,17 @@ import java.util.Objects;
 @Entity
 @Table(name = "subject_type", schema = "timetable", catalog = "")
 public class SubjectType {
-    private byte id;
+    private Byte id;
     private String name;
     private Collection<Record> recordsById;
 
     @Id
     @Column(name = "id", nullable = false)
-    public byte getId() {
+    public Byte getId() {
         return id;
     }
 
-    public void setId(byte id) {
+    public void setId(Byte id) {
         this.id = id;
     }
 
@@ -35,9 +35,12 @@ public class SubjectType {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         SubjectType that = (SubjectType) o;
-        return id == that.id &&
-                Objects.equals(name, that.name);
+
+        if (!id.equals(that.id)) return false;
+        if (!name.equals(that.name)) return false;
+        return recordsById.equals(that.recordsById);
     }
 
     @Override

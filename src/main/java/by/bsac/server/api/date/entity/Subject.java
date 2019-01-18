@@ -7,21 +7,21 @@ import java.util.Objects;
 @Entity
 @Table(name = "subject",schema = "timetable")
 public class Subject {
-    private short idSubject;
+    private Short idSubject;
     private String nameSubject;
-    private byte idChair;
-    private byte eduLevel;
+    private Byte idChair;
+    private Byte eduLevel;
     private String abnameSubject;
     private Collection<Record> recordsByIdSubject;
     private Chair chairByIdChair;
 
     @Id
     @Column(name = "id_subject", nullable = false)
-    public short getIdSubject() {
+    public Short getIdSubject() {
         return idSubject;
     }
 
-    public void setIdSubject(short idSubject) {
+    public void setIdSubject(Short idSubject) {
         this.idSubject = idSubject;
     }
 
@@ -37,21 +37,21 @@ public class Subject {
 
     @Basic
     @Column(name = "id_chair", nullable = false,insertable = false,updatable = false)
-    public byte getIdChair() {
+    public Byte getIdChair() {
         return idChair;
     }
 
-    public void setIdChair(byte idChair) {
+    public void setIdChair(Byte idChair) {
         this.idChair = idChair;
     }
 
     @Basic
     @Column(name = "edu_level", nullable = false)
-    public byte getEduLevel() {
+    public Byte getEduLevel() {
         return eduLevel;
     }
 
-    public void setEduLevel(byte eduLevel) {
+    public void setEduLevel(Byte eduLevel) {
         this.eduLevel = eduLevel;
     }
 
@@ -69,12 +69,16 @@ public class Subject {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Subject subject = (Subject) o;
-        return idSubject == subject.idSubject &&
-                idChair == subject.idChair &&
-                eduLevel == subject.eduLevel &&
-                Objects.equals(nameSubject, subject.nameSubject) &&
-                Objects.equals(abnameSubject, subject.abnameSubject);
+
+        if (!idSubject.equals(subject.idSubject)) return false;
+        if (!nameSubject.equals(subject.nameSubject)) return false;
+        if (!idChair.equals(subject.idChair)) return false;
+        if (!eduLevel.equals(subject.eduLevel)) return false;
+        if (!abnameSubject.equals(subject.abnameSubject)) return false;
+        if (!recordsByIdSubject.equals(subject.recordsByIdSubject)) return false;
+        return chairByIdChair.equals(subject.chairByIdChair);
     }
 
     @Override

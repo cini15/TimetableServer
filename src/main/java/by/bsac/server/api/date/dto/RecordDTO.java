@@ -10,18 +10,18 @@ import java.util.Collection;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class RecordDTO {
 
-    private int idRecord;
-    private byte weekNumber;
-    private byte weekDay;
-    private byte subjOrdinalNumber;
-    private short idGroup;
-    private short idSubject;
-    private short idLecturer;
-    private byte idSubjectType;
-    private byte idSubjectFor;
+    private Integer idRecord;
+    private Byte weekNumber;
+    private Byte weekDay;
+    private Byte subjOrdinalNumber;
+    private Short idGroup;
+    private Short idSubject;
+    private Short idLecturer;
+    private Byte idSubjectType;
+    private Byte idSubjectFor;
     private Date dateFrom;
     private Date dateTo;
-    private short idClassroom;
+    private Short idClassroom;
     private Collection<CancellationDTO> cancellationsByIdRecord;
     private SubjectTypeDTO subjectTypeByIdSubjectType;
     private SubjectForDTO subjectForByIdSubjectFor;
@@ -30,7 +30,7 @@ public class RecordDTO {
     public RecordDTO() {
     }
 
-    public RecordDTO(int idRecord, byte weekNumber, byte weekDay, byte subjOrdinalNumber, short idGroup, short idSubject, short idLecturer, byte idSubjectType, byte idSubjectFor, Date dateFrom, Date dateTo, short idClassroom, Collection<CancellationDTO> cancellationsByIdRecord,  SubjectTypeDTO subjectTypeByIdSubjectType, SubjectForDTO subjectForByIdSubjectFor, ClassroomDTO classroomByIdClassroom) {
+    public RecordDTO(Integer idRecord, Byte weekNumber, Byte weekDay, Byte subjOrdinalNumber, Short idGroup, Short idSubject, Short idLecturer, Byte idSubjectType, Byte idSubjectFor, Date dateFrom, Date dateTo, Short idClassroom, Collection<CancellationDTO> cancellationsByIdRecord, SubjectTypeDTO subjectTypeByIdSubjectType, SubjectForDTO subjectForByIdSubjectFor, ClassroomDTO classroomByIdClassroom) {
         this.idRecord = idRecord;
         this.weekNumber = weekNumber;
         this.weekDay = weekDay;
@@ -49,75 +49,75 @@ public class RecordDTO {
         this.classroomByIdClassroom = classroomByIdClassroom;
     }
 
-    public int getIdRecord() {
+    public Integer getIdRecord() {
         return idRecord;
     }
 
-    public void setIdRecord(int idRecord) {
+    public void setIdRecord(Integer idRecord) {
         this.idRecord = idRecord;
     }
 
-    public byte getWeekNumber() {
+    public Byte getWeekNumber() {
         return weekNumber;
     }
 
-    public void setWeekNumber(byte weekNumber) {
+    public void setWeekNumber(Byte weekNumber) {
         this.weekNumber = weekNumber;
     }
 
-    public byte getWeekDay() {
+    public Byte getWeekDay() {
         return weekDay;
     }
 
-    public void setWeekDay(byte weekDay) {
+    public void setWeekDay(Byte weekDay) {
         this.weekDay = weekDay;
     }
 
-    public byte getSubjOrdinalNumber() {
+    public Byte getSubjOrdinalNumber() {
         return subjOrdinalNumber;
     }
 
-    public void setSubjOrdinalNumber(byte subjOrdinalNumber) {
+    public void setSubjOrdinalNumber(Byte subjOrdinalNumber) {
         this.subjOrdinalNumber = subjOrdinalNumber;
     }
 
-    public short getIdGroup() {
+    public Short getIdGroup() {
         return idGroup;
     }
 
-    public void setIdGroup(short idGroup) {
+    public void setIdGroup(Short idGroup) {
         this.idGroup = idGroup;
     }
 
-    public short getIdSubject() {
+    public Short getIdSubject() {
         return idSubject;
     }
 
-    public void setIdSubject(short idSubject) {
+    public void setIdSubject(Short idSubject) {
         this.idSubject = idSubject;
     }
 
-    public short getIdLecturer() {
+    public Short getIdLecturer() {
         return idLecturer;
     }
 
-    public void setIdLecturer(short idLecturer) {
+    public void setIdLecturer(Short idLecturer) {
         this.idLecturer = idLecturer;
     }
 
-    public byte getIdSubjectType() {
+    public Byte getIdSubjectType() {
         return idSubjectType;
     }
 
-    public void setIdSubjectType(byte idSubjectType) {
+    public void setIdSubjectType(Byte idSubjectType) {
         this.idSubjectType = idSubjectType;
     }
 
-    public byte getIdSubjectFor() {
+    public Byte getIdSubjectFor() {
         return idSubjectFor;
     }
 
-    public void setIdSubjectFor(byte idSubjectFor) {
+    public void setIdSubjectFor(Byte idSubjectFor) {
         this.idSubjectFor = idSubjectFor;
     }
 
@@ -137,11 +137,11 @@ public class RecordDTO {
         this.dateTo = dateTo;
     }
 
-    public short getIdClassroom() {
+    public Short getIdClassroom() {
         return idClassroom;
     }
 
-    public void setIdClassroom(short idClassroom) {
+    public void setIdClassroom(Short idClassroom) {
         this.idClassroom = idClassroom;
     }
 

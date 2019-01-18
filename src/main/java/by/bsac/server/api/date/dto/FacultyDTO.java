@@ -10,7 +10,7 @@ import java.util.Collection;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FacultyDTO {
-    private byte idFaculty;
+    private Byte idFaculty;
     private String nameFaculty;
     @JsonProperty("groups")
     private Collection<GroupDTO> groupsByIdFaculty=new ArrayList<>();
@@ -24,11 +24,11 @@ public class FacultyDTO {
         this.groupsByIdFaculty = groupsByIdFaculty;
     }
 
-    public byte getIdFaculty() {
+    public Byte getIdFaculty() {
         return idFaculty;
     }
 
-    public void setIdFaculty(byte idFaculty) {
+    public void setIdFaculty(Byte idFaculty) {
         this.idFaculty = idFaculty;
     }
 

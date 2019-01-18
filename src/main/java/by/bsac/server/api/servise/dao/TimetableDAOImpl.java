@@ -23,7 +23,7 @@ public class TimetableDAOImpl implements TimetableDAO {
     @Override
     public Collection<Faculty> getListFacultyAndGroups() {
 
-        Collection<Faculty> faculties;
+//        Collection<Faculty> faculties;
 
         Session session = sessionFactory.openSession();
 
@@ -33,16 +33,16 @@ public class TimetableDAOImpl implements TimetableDAO {
                 "left join fetch gr.flowByIdFlow",Faculty.class);
 
         List<Faculty> list=q.getResultList();
-        faculties =new LinkedHashSet<>(list);
+//        faculties =new LinkedHashSet<>(list);
 
         session.close();
 
-        return faculties;
+        return list;
     }
 
     @Override
     public Collection<Record> getListRecords() {
-        Collection <Record> records;
+//        Collection <Record> records;
 
         Session session = sessionFactory.openSession();
 
@@ -56,14 +56,14 @@ public class TimetableDAOImpl implements TimetableDAO {
 
         List<Record> list=q.list();
 
-        records=new LinkedHashSet<>(list);
+
         session.close();
-        return records;
+        return list;
     }
 
     @Override
     public Collection<Chair> getLisChairsAndLecturers() {
-        Collection<Chair> chairs;
+//        Collection<Chair> chairs;
 
         Session session=sessionFactory.openSession();
         Query<Chair> q=session.createQuery(
@@ -72,16 +72,16 @@ public class TimetableDAOImpl implements TimetableDAO {
 
         List<Chair> list=  q.getResultList();
 
-        chairs=new LinkedHashSet<>(list);
+//        chairs=new LinkedHashSet<>(list);
         session.close();
 
-        return chairs;
+        return list;
     }
 
     @Override
     public Collection<Subject> getListSubjects() {
 
-        Collection<Subject> subjects;
+//        Collection<Subject> subjects;
         Session session=sessionFactory.openSession();
         Query<Subject> q=session.createQuery(
                 "select su from Subject su "
@@ -89,10 +89,10 @@ public class TimetableDAOImpl implements TimetableDAO {
 
         List<Subject> list=  q.getResultList();
 
-        subjects=new LinkedHashSet<>(list);
+//        subjects=new LinkedHashSet<>(list);
         session.close();
 
 
-        return subjects;
+        return list;
     }
 }

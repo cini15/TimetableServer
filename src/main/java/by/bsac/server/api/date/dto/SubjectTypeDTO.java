@@ -4,14 +4,18 @@ package by.bsac.server.api.date.dto;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import java.util.Collection;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SubjectTypeDTO {
-    private byte id;
+    private Byte id;
     private String name;
 
     public SubjectTypeDTO() {
+    }
+
+    public SubjectTypeDTO(Byte id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public SubjectTypeDTO(byte id, String name) {
@@ -19,11 +23,11 @@ public class SubjectTypeDTO {
         this.name = name;
     }
 
-    public byte getId() {
+    public Byte getId() {
         return id;
     }
 
-    public void setId(byte id) {
+    public void setId(Byte id) {
         this.id = id;
     }
 

@@ -10,18 +10,18 @@ import java.util.Objects;
 @Entity
 @Table(name = "chair",schema = "timetable")
 public class Chair {
-    private byte idChair;
+    private Byte idChair;
     private String nameChair;
     private Collection<Lecturer> lecturersByIdChair;
     private Collection<Subject> subjectsByIdChair;
 
     @Id
     @Column(name = "id_chair", nullable = false)
-    public byte getIdChair() {
+    public Byte getIdChair() {
         return idChair;
     }
 
-    public void setIdChair(byte idChair) {
+    public void setIdChair(Byte idChair) {
         this.idChair = idChair;
     }
 
@@ -39,9 +39,13 @@ public class Chair {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Chair chair = (Chair) o;
-        return idChair == chair.idChair &&
-                Objects.equals(nameChair, chair.nameChair);
+
+        if (!idChair.equals(chair.idChair)) return false;
+        if (!nameChair.equals(chair.nameChair)) return false;
+        if (!lecturersByIdChair.equals(chair.lecturersByIdChair)) return false;
+        return subjectsByIdChair.equals(chair.subjectsByIdChair);
     }
 
     @Override

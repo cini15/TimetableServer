@@ -8,18 +8,18 @@ import java.util.Objects;
 @Entity
 @Table(name = "record",schema = "timetable")
 public class Record {
-    private int idRecord;
-    private byte weekNumber;
-    private byte weekDay;
-    private byte subjOrdinalNumber;
-    private short idGroup;
-    private short idSubject;
-    private short idLecturer;
-    private byte idSubjectType;
-    private byte idSubjectFor;
+    private Integer idRecord;
+    private Byte weekNumber;
+    private Byte weekDay;
+    private Byte subjOrdinalNumber;
+    private Short idGroup;
+    private Short idSubject;
+    private Short idLecturer;
+    private Byte idSubjectType;
+    private Byte idSubjectFor;
     private Date dateFrom;
     private Date dateTo;
-    private short idClassroom;
+    private Short idClassroom;
     private Collection<Cancellation> cancellationsByIdRecord;
     private Group groupByIdGroup;
     private Subject subjectByIdSubject;
@@ -30,91 +30,91 @@ public class Record {
 
     @Id
     @Column(name = "id_record", nullable = false)
-    public int getIdRecord() {
+    public Integer getIdRecord() {
         return idRecord;
     }
 
-    public void setIdRecord(int idRecord) {
+    public void setIdRecord(Integer idRecord) {
         this.idRecord = idRecord;
     }
 
     @Basic
     @Column(name = "week_number", nullable = false)
-    public byte getWeekNumber() {
+    public Byte getWeekNumber() {
         return weekNumber;
     }
 
-    public void setWeekNumber(byte weekNumber) {
+    public void setWeekNumber(Byte weekNumber) {
         this.weekNumber = weekNumber;
     }
 
     @Basic
     @Column(name = "week_day", nullable = false)
-    public byte getWeekDay() {
+    public Byte getWeekDay() {
         return weekDay;
     }
 
-    public void setWeekDay(byte weekDay) {
+    public void setWeekDay(Byte weekDay) {
         this.weekDay = weekDay;
     }
 
     @Basic
     @Column(name = "subj_ordinal_number", nullable = false)
-    public byte getSubjOrdinalNumber() {
+    public Byte getSubjOrdinalNumber() {
         return subjOrdinalNumber;
     }
 
-    public void setSubjOrdinalNumber(byte subjOrdinalNumber) {
+    public void setSubjOrdinalNumber(Byte subjOrdinalNumber) {
         this.subjOrdinalNumber = subjOrdinalNumber;
     }
 
     @Basic
     @Column(name = "id_group", nullable = false,insertable = false,updatable = false)
-    public short getIdGroup() {
+    public Short getIdGroup() {
         return idGroup;
     }
 
-    public void setIdGroup(short idGroup) {
+    public void setIdGroup(Short idGroup) {
         this.idGroup = idGroup;
     }
 
     @Basic
     @Column(name = "id_subject", nullable = false,insertable = false,updatable = false)
-    public short getIdSubject() {
+    public Short getIdSubject() {
         return idSubject;
     }
 
-    public void setIdSubject(short idSubject) {
+    public void setIdSubject(Short idSubject) {
         this.idSubject = idSubject;
     }
 
     @Basic
     @Column(name = "id_lecturer", nullable = false,insertable = false,updatable = false)
-    public short getIdLecturer() {
+    public Short getIdLecturer() {
         return idLecturer;
     }
 
-    public void setIdLecturer(short idLecturer) {
+    public void setIdLecturer(Short idLecturer) {
         this.idLecturer = idLecturer;
     }
 
     @Basic
     @Column(name = "id_subject_type", nullable = false,insertable = false,updatable = false)
-    public byte getIdSubjectType() {
+    public Byte getIdSubjectType() {
         return idSubjectType;
     }
 
-    public void setIdSubjectType(byte idSubjectType) {
+    public void setIdSubjectType(Byte idSubjectType) {
         this.idSubjectType = idSubjectType;
     }
 
     @Basic
     @Column(name = "id_subject_for", nullable = false,insertable = false,updatable = false)
-    public byte getIdSubjectFor() {
+    public Byte getIdSubjectFor() {
         return idSubjectFor;
     }
 
-    public void setIdSubjectFor(byte idSubjectFor) {
+    public void setIdSubjectFor(Byte idSubjectFor) {
         this.idSubjectFor = idSubjectFor;
     }
 
@@ -140,11 +140,11 @@ public class Record {
 
     @Basic
     @Column(name = "id_classroom", nullable = false,insertable = false,updatable = false)
-    public short getIdClassroom() {
+    public Short getIdClassroom() {
         return idClassroom;
     }
 
-    public void setIdClassroom(short idClassroom) {
+    public void setIdClassroom(Short idClassroom) {
         this.idClassroom = idClassroom;
     }
 
@@ -152,19 +152,28 @@ public class Record {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Record record = (Record) o;
-        return idRecord == record.idRecord &&
-                weekNumber == record.weekNumber &&
-                weekDay == record.weekDay &&
-                subjOrdinalNumber == record.subjOrdinalNumber &&
-                idGroup == record.idGroup &&
-                idSubject == record.idSubject &&
-                idLecturer == record.idLecturer &&
-                idSubjectType == record.idSubjectType &&
-                idSubjectFor == record.idSubjectFor &&
-                idClassroom == record.idClassroom &&
-                Objects.equals(dateFrom, record.dateFrom) &&
-                Objects.equals(dateTo, record.dateTo);
+
+        if (!idRecord.equals(record.idRecord)) return false;
+        if (!weekNumber.equals(record.weekNumber)) return false;
+        if (!weekDay.equals(record.weekDay)) return false;
+        if (!subjOrdinalNumber.equals(record.subjOrdinalNumber)) return false;
+        if (!idGroup.equals(record.idGroup)) return false;
+        if (!idSubject.equals(record.idSubject)) return false;
+        if (!idLecturer.equals(record.idLecturer)) return false;
+        if (!idSubjectType.equals(record.idSubjectType)) return false;
+        if (!idSubjectFor.equals(record.idSubjectFor)) return false;
+        if (!dateFrom.equals(record.dateFrom)) return false;
+        if (!dateTo.equals(record.dateTo)) return false;
+        if (!idClassroom.equals(record.idClassroom)) return false;
+        if (!cancellationsByIdRecord.equals(record.cancellationsByIdRecord)) return false;
+        if (!groupByIdGroup.equals(record.groupByIdGroup)) return false;
+        if (!subjectByIdSubject.equals(record.subjectByIdSubject)) return false;
+        if (!lecturerByIdLecturer.equals(record.lecturerByIdLecturer)) return false;
+        if (!subjectTypeByIdSubjectType.equals(record.subjectTypeByIdSubjectType)) return false;
+        if (!subjectForByIdSubjectFor.equals(record.subjectForByIdSubjectFor)) return false;
+        return classroomByIdClassroom.equals(record.classroomByIdClassroom);
     }
 
     @Override

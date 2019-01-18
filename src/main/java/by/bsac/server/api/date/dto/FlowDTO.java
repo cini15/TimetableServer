@@ -1,15 +1,16 @@
 package by.bsac.server.api.date.dto;
 
-import by.bsac.server.api.date.entity.Group;
-
-import java.util.Collection;
-
 public class FlowDTO {
 
-    private short idFlow;
+    private Short idFlow;
     private String name;
 
     public FlowDTO() {
+    }
+
+    public FlowDTO(Short idFlow, String name) {
+        this.idFlow = idFlow;
+        this.name = name;
     }
 
     public FlowDTO(short idFlow, String name) {
@@ -17,11 +18,11 @@ public class FlowDTO {
         this.name = name;
     }
 
-    public short getIdFlow() {
+    public Short getIdFlow() {
         return idFlow;
     }
 
-    public void setIdFlow(short idFlow) {
+    public void setIdFlow(Short idFlow) {
         this.idFlow = idFlow;
     }
 

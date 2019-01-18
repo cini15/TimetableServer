@@ -11,10 +11,16 @@ import java.util.Collection;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ChairDTO {
 
-    private byte idChair;
+    private Byte idChair;
     private String nameChair;
     @JsonProperty("lecturers")
     private Collection<LecturerDTO> lecturersByIdChair;
+
+    public ChairDTO(Byte idChair, String nameChair, Collection<LecturerDTO> lecturersByIdChair) {
+        this.idChair = idChair;
+        this.nameChair = nameChair;
+        this.lecturersByIdChair = lecturersByIdChair;
+    }
 
     public ChairDTO(byte idChair, String nameChair, Collection<LecturerDTO> lecturersByIdChair, Collection<SubjectDTO> subjectsByIdChair) {
         this.idChair = idChair;
@@ -25,11 +31,11 @@ public class ChairDTO {
     public ChairDTO() {
     }
 
-    public byte getIdChair() {
+    public Byte getIdChair() {
         return idChair;
     }
 
-    public void setIdChair(byte idChair) {
+    public void setIdChair(Byte idChair) {
         this.idChair = idChair;
     }
 

@@ -7,38 +7,38 @@ import java.util.Objects;
 @Entity
 @Table(name = "classroom",schema = "timetable")
 public class Classroom {
-    private short idClassroom;
-    private short number;
-    private byte building;
+    private Short idClassroom;
+    private Short number;
+    private Byte building;
     private Collection<Record> recordsByIdClassroom;
 
     @Id
     @Column(name = "id_classroom", nullable = false)
-    public short getIdClassroom() {
+    public Short getIdClassroom() {
         return idClassroom;
     }
 
-    public void setIdClassroom(short idClassroom) {
+    public void setIdClassroom(Short idClassroom) {
         this.idClassroom = idClassroom;
     }
 
     @Basic
     @Column(name = "number", nullable = false)
-    public short getNumber() {
+    public Short getNumber() {
         return number;
     }
 
-    public void setNumber(short number) {
+    public void setNumber(Short number) {
         this.number = number;
     }
 
     @Basic
     @Column(name = "building", nullable = false)
-    public byte getBuilding() {
+    public Byte getBuilding() {
         return building;
     }
 
-    public void setBuilding(byte building) {
+    public void setBuilding(Byte building) {
         this.building = building;
     }
 
@@ -46,10 +46,13 @@ public class Classroom {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Classroom classroom = (Classroom) o;
-        return idClassroom == classroom.idClassroom &&
-                number == classroom.number &&
-                building == classroom.building;
+
+        if (!idClassroom.equals(classroom.idClassroom)) return false;
+        if (!number.equals(classroom.number)) return false;
+        if (!building.equals(classroom.building)) return false;
+        return recordsByIdClassroom.equals(classroom.recordsByIdClassroom);
     }
 
     @Override

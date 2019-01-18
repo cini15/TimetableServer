@@ -9,22 +9,22 @@ import java.util.Objects;
 @Entity
 @Table(name = "`group`",schema = "timetable")
 public class Group {
-    private short idGroup;
+    private Short idGroup;
     private String nameGroup;
     private Short idFlow;
-    private byte idFaculty;
-    private byte eduLevel;
+    private Byte idFaculty;
+    private Byte eduLevel;
     private Flow flowByIdFlow;
     private Faculty facultyByIdFaculty;
     private Collection<Record> recordsByIdGroup;
 
     @Id
     @Column(name = "id_group", nullable = false)
-    public short getIdGroup() {
+    public Short getIdGroup() {
         return idGroup;
     }
 
-    public void setIdGroup(short idGroup) {
+    public void setIdGroup(Short idGroup) {
         this.idGroup = idGroup;
     }
 
@@ -50,40 +50,52 @@ public class Group {
 
     @Basic
     @Column(name = "id_faculty", nullable = false,insertable = false,updatable = false)
-    public byte getIdFaculty() {
+    public Byte getIdFaculty() {
         return idFaculty;
     }
 
-    public void setIdFaculty(byte idFaculty) {
+    public void setIdFaculty(Byte idFaculty) {
         this.idFaculty = idFaculty;
     }
 
     @Basic
     @Column(name = "edu_level", nullable = false)
-    public byte getEduLevel() {
+    public Byte getEduLevel() {
         return eduLevel;
     }
 
-    public void setEduLevel(byte eduLevel) {
+    public void setEduLevel(Byte eduLevel) {
         this.eduLevel = eduLevel;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Group)) return false;
+
         Group group = (Group) o;
-        return idGroup == group.idGroup &&
-                idFaculty == group.idFaculty &&
-                eduLevel == group.eduLevel &&
-                Objects.equals(nameGroup, group.nameGroup) &&
-                Objects.equals(idFlow, group.idFlow);
+
+        if (!idGroup.equals(group.idGroup)) return false;
+        if (!nameGroup.equals(group.nameGroup)) return false;
+        if (!idFlow.equals(group.idFlow)) return false;
+        if (!idFaculty.equals(group.idFaculty)) return false;
+        if (!eduLevel.equals(group.eduLevel)) return false;
+        if (!flowByIdFlow.equals(group.flowByIdFlow)) return false;
+        if (!facultyByIdFaculty.equals(group.facultyByIdFaculty)) return false;
+        return recordsByIdGroup.equals(group.recordsByIdGroup);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(idGroup, nameGroup, idFlow, idFaculty, eduLevel);
+        int result = idGroup.hashCode();
+        result = 31 * result + nameGroup.hashCode();
+        result = 31 * result + idFlow.hashCode();
+        result = 31 * result + idFaculty.hashCode();
+        result = 31 * result + eduLevel.hashCode();
+        result = 31 * result + flowByIdFlow.hashCode();
+        result = 31 * result + facultyByIdFaculty.hashCode();
+        result = 31 * result + recordsByIdGroup.hashCode();
+        return result;
     }
 
     @ManyToOne

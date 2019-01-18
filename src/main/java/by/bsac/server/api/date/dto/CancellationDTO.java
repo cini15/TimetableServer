@@ -10,10 +10,17 @@ import java.sql.Date;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CancellationDTO {
 
-    private int idCancellation;
-    private int idRecord;
+    private Integer idCancellation;
+    private Integer idRecord;
     private Date dateTo;
     private Date dateFrom;
+
+    public CancellationDTO(Integer idCancellation, Integer idRecord, Date dateTo, Date dateFrom) {
+        this.idCancellation = idCancellation;
+        this.idRecord = idRecord;
+        this.dateTo = dateTo;
+        this.dateFrom = dateFrom;
+    }
 
     public CancellationDTO(int idCancellation, int idRecord, Date dateTo, Date dateFrom) {
         this.idCancellation = idCancellation;
@@ -26,19 +33,19 @@ public class CancellationDTO {
     public CancellationDTO() {
     }
 
-    public int getIdCancellation() {
+    public Integer getIdCancellation() {
         return idCancellation;
     }
 
-    public void setIdCancellation(int idCancellation) {
+    public void setIdCancellation(Integer idCancellation) {
         this.idCancellation = idCancellation;
     }
 
-    public int getIdRecord() {
+    public Integer getIdRecord() {
         return idRecord;
     }
 
-    public void setIdRecord(int idRecord) {
+    public void setIdRecord(Integer idRecord) {
         this.idRecord = idRecord;
     }
 

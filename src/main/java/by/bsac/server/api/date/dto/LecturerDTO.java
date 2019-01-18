@@ -11,25 +11,24 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 public class LecturerDTO{
 
-    private short idLecturer;
+    private Short idLecturer;
     private String nameLecturer;
-    private byte idChair;
+    private Byte idChair;
 
     public LecturerDTO() {
     }
 
-    public LecturerDTO(short idLecturer, String nameLecturer, byte idChair) {
+    public LecturerDTO(Short idLecturer, String nameLecturer, Byte idChair) {
         this.idLecturer = idLecturer;
         this.nameLecturer = nameLecturer;
         this.idChair = idChair;
-
     }
 
-    public short getIdLecturer() {
+    public Short getIdLecturer() {
         return idLecturer;
     }
 
-    public void setIdLecturer(short idLecturer) {
+    public void setIdLecturer(Short idLecturer) {
         this.idLecturer = idLecturer;
     }
 
@@ -41,11 +40,11 @@ public class LecturerDTO{
         this.nameLecturer = nameLecturer;
     }
 
-    public byte getIdChair() {
+    public Byte getIdChair() {
         return idChair;
     }
 
-    public void setIdChair(byte idChair) {
+    public void setIdChair(Byte idChair) {
         this.idChair = idChair;
     }
 

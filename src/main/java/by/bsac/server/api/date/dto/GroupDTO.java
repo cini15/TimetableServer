@@ -3,26 +3,23 @@ package by.bsac.server.api.date.dto;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import java.util.Collection;
-
-
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
 public class GroupDTO {
-    private short idGroup;
+    private Short idGroup;
     private String nameGroup;
     private Short idFlow;
-    private byte idFaculty;
-    private byte eduLevel;
+    private Byte idFaculty;
+    private Byte eduLevel;
     private FlowDTO flowByIdFlow;
 
-    public short getIdGroup() {
+    public Short getIdGroup() {
         return idGroup;
     }
 
-    public void setIdGroup(short idGroup) {
+    public void setIdGroup(Short idGroup) {
         this.idGroup = idGroup;
     }
 
@@ -42,19 +39,19 @@ public class GroupDTO {
         this.idFlow = idFlow;
     }
 
-    public byte getIdFaculty() {
+    public Byte getIdFaculty() {
         return idFaculty;
     }
 
-    public void setIdFaculty(byte idFaculty) {
+    public void setIdFaculty(Byte idFaculty) {
         this.idFaculty = idFaculty;
     }
 
-    public byte getEduLevel() {
+    public Byte getEduLevel() {
         return eduLevel;
     }
 
-    public void setEduLevel(byte eduLevel) {
+    public void setEduLevel(Byte eduLevel) {
         this.eduLevel = eduLevel;
     }
 
