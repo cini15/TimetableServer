@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ContextConfiguration
-public class FacultyDAOTest {
+public class FacultyDAOImplTest {
     @Autowired
     GenericDAO<Faculty,Byte> facultyDAO;
 

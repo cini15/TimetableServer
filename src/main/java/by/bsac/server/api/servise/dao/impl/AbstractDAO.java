@@ -17,12 +17,13 @@ public class AbstractDAO<P, T> implements GenericDAO<P, T> {
     private final Class<P> clazz;
 
     @Autowired
-    private EntityManager manager;
+    protected EntityManager manager;
 
 
     protected AbstractDAO(Class<P> clazz) {
         this.clazz = clazz;
     }
+
     @Transactional
     @Override
     public void add(P object) {
@@ -50,7 +51,7 @@ public class AbstractDAO<P, T> implements GenericDAO<P, T> {
 
     @Override
     public List<P> getAll() {
-        log.debug("getAll");
+        log.debug("getAll ");
         TypedQuery<P> query;
         query = manager.createQuery("select P from "
                 + clazz.getSimpleName()
@@ -67,7 +68,7 @@ public class AbstractDAO<P, T> implements GenericDAO<P, T> {
     @Transactional
     @Override
     public void updateAll(List<P> listObject) {
-        log.debug("updateAll"+listObject);
+        log.debug("updateAll "+listObject);
         for (P p : listObject) {
             manager.merge(p);
         }

@@ -27,7 +27,7 @@ public class TimetableDAOImpl implements TimetableDAO {
         Collection<Faculty> list= sessionFactory.createQuery(
                 "SELECT  f from Faculty f " +
                         "left  join fetch f.groupsByIdFaculty gr " +
-                        "left  join fetch gr.flowByIdFlow",Faculty.class)
+                        "left  join fetch  gr.flowByIdFlow",Faculty.class)
                 .getResultList();
 //        faculties =new LinkedHashSet<>(list);
 
