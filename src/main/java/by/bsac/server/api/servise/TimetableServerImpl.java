@@ -1,8 +1,6 @@
 package by.bsac.server.api.servise;
 
 
-import by.bsac.server.api.date.TransformEntityToDTO;
-import by.bsac.server.api.date.dto.*;
 import by.bsac.server.api.date.entity.*;
 import by.bsac.server.api.servise.dao.TimetableDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +10,12 @@ import java.util.*;
 @Controller
 public class TimetableServerImpl implements TimetableServise {
 
+    private final TimetableDAO timetableDAO;
+
     @Autowired
-    private TimetableDAO timetableDAO;
+    public TimetableServerImpl(TimetableDAO timetableDAO) {
+        this.timetableDAO = timetableDAO;
+    }
 
     @Override
     public Collection<Faculty> getFacultyList() {

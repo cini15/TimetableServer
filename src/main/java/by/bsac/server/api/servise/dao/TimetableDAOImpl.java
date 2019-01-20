@@ -1,22 +1,21 @@
 package by.bsac.server.api.servise.dao;
 
 import by.bsac.server.api.date.entity.*;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.util.*;
+
 
 @Repository
 public class TimetableDAOImpl implements TimetableDAO {
 
+    private final EntityManager sessionFactory;
+
     @Autowired
-    private SessionFactory sessionFactory;
-
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
+    public TimetableDAOImpl(EntityManager sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
@@ -25,74 +24,56 @@ public class TimetableDAOImpl implements TimetableDAO {
 
 //        Collection<Faculty> faculties;
 
-        Session session = sessionFactory.openSession();
-
-        Query<Faculty> q = session.createQuery(
+        Collection<Faculty> list= sessionFactory.createQuery(
                 "SELECT  f from Faculty f " +
-                "left join fetch f.groupsByIdFaculty gr " +
-                "left join fetch gr.flowByIdFlow",Faculty.class);
-
-        List<Faculty> list=q.getResultList();
+                        "left  join fetch f.groupsByIdFaculty gr " +
+                        "left  join fetch gr.flowByIdFlow",Faculty.class)
+                .getResultList();
 //        faculties =new LinkedHashSet<>(list);
 
-        session.close();
-
-        return list;
+        return new LinkedHashSet<>(list);
     }
 
     @Override
     public Collection<Record> getListRecords() {
 //        Collection <Record> records;
 
-        Session session = sessionFactory.openSession();
-
-        Query<Record> q=session.createQuery(
+        List<Record> list=sessionFactory.createQuery(
                 "select r from Record r " +
                 "left join fetch r.classroomByIdClassroom " +
                 "left join fetch r.subjectForByIdSubjectFor " +
                 "left join fetch r.subjectTypeByIdSubjectType " +
                 "left join fetch r.cancellationsByIdRecord "
-                ,Record.class);
-
-        List<Record> list=q.list();
-
-
-        session.close();
-        return list;
+                ,Record.class)
+                 .getResultList();
+        return new LinkedHashSet<>(list);
     }
 
     @Override
     public Collection<Chair> getLisChairsAndLecturers() {
 //        Collection<Chair> chairs;
-
-        Session session=sessionFactory.openSession();
-        Query<Chair> q=session.createQuery(
+        List<Chair> list=sessionFactory.createQuery(
                 "select ch from Chair ch "
-                ,Chair.class);
+                ,Chair.class).getResultList();
 
-        List<Chair> list=  q.getResultList();
 
 //        chairs=new LinkedHashSet<>(list);
-        session.close();
 
-        return list;
+
+        return new LinkedHashSet<>(list);
     }
 
     @Override
     public Collection<Subject> getListSubjects() {
 
 //        Collection<Subject> subjects;
-        Session session=sessionFactory.openSession();
-        Query<Subject> q=session.createQuery(
+        List<Subject> list=sessionFactory.createQuery(
                 "select su from Subject su "
-                ,Subject.class);
+                ,Subject.class)
+                .getResultList();
 
-        List<Subject> list=  q.getResultList();
 
 //        subjects=new LinkedHashSet<>(list);
-        session.close();
-
-
-        return list;
+        return new LinkedHashSet<>(list);
     }
 }

@@ -22,15 +22,15 @@ public class ApiServerTimetableController {
 
     private static final Logger log= LoggerFactory.getLogger(ApiServerTimetableController.class);
 
-
-
-    @Autowired()
     private TimetableServise timetable;
+    private final TransformEntityToDTO toDTO;
 
     @Autowired
-    private TransformEntityToDTO toDTO;
+    public ApiServerTimetableController(TransformEntityToDTO toDTO) {
+        this.toDTO = toDTO;
+    }
 
-
+    @Autowired()
     public void setTimetable(TimetableServise timetable) {
         this.timetable = timetable;
     }
