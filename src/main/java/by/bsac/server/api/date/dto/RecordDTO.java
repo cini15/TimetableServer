@@ -22,32 +22,10 @@ public class RecordDTO {
     private Date dateFrom;
     private Date dateTo;
     private Short idClassroom;
-    private Collection<CancellationDTO> cancellationsByIdRecord;
-    private SubjectTypeDTO subjectTypeByIdSubjectType;
-    private SubjectForDTO subjectForByIdSubjectFor;
-    private ClassroomDTO classroomByIdClassroom;
 
     public RecordDTO() {
     }
 
-    public RecordDTO(Integer idRecord, Byte weekNumber, Byte weekDay, Byte subjOrdinalNumber, Short idGroup, Short idSubject, Short idLecturer, Byte idSubjectType, Byte idSubjectFor, Date dateFrom, Date dateTo, Short idClassroom, Collection<CancellationDTO> cancellationsByIdRecord, SubjectTypeDTO subjectTypeByIdSubjectType, SubjectForDTO subjectForByIdSubjectFor, ClassroomDTO classroomByIdClassroom) {
-        this.idRecord = idRecord;
-        this.weekNumber = weekNumber;
-        this.weekDay = weekDay;
-        this.subjOrdinalNumber = subjOrdinalNumber;
-        this.idGroup = idGroup;
-        this.idSubject = idSubject;
-        this.idLecturer = idLecturer;
-        this.idSubjectType = idSubjectType;
-        this.idSubjectFor = idSubjectFor;
-        this.dateFrom = dateFrom;
-        this.dateTo = dateTo;
-        this.idClassroom = idClassroom;
-        this.cancellationsByIdRecord = cancellationsByIdRecord;
-        this.subjectTypeByIdSubjectType = subjectTypeByIdSubjectType;
-        this.subjectForByIdSubjectFor = subjectForByIdSubjectFor;
-        this.classroomByIdClassroom = classroomByIdClassroom;
-    }
 
     public Integer getIdRecord() {
         return idRecord;
@@ -145,36 +123,4 @@ public class RecordDTO {
         this.idClassroom = idClassroom;
     }
 
-    public Collection<CancellationDTO> getCancellationsByIdRecord() {
-        return cancellationsByIdRecord;
-    }
-
-    public void setCancellationsByIdRecord(Collection<CancellationDTO> cancellationsByIdRecord) {
-        this.cancellationsByIdRecord = cancellationsByIdRecord;
-    }
-
-
-    public SubjectTypeDTO getSubjectTypeByIdSubjectType() {
-        return subjectTypeByIdSubjectType;
-    }
-
-    public void setSubjectTypeByIdSubjectType(SubjectTypeDTO subjectTypeByIdSubjectType) {
-        this.subjectTypeByIdSubjectType = subjectTypeByIdSubjectType;
-    }
-
-    public SubjectForDTO getSubjectForByIdSubjectFor() {
-        return subjectForByIdSubjectFor;
-    }
-
-    public void setSubjectForByIdSubjectFor(SubjectForDTO subjectForByIdSubjectFor) {
-        this.subjectForByIdSubjectFor = subjectForByIdSubjectFor;
-    }
-
-    public ClassroomDTO getClassroomByIdClassroom() {
-        return classroomByIdClassroom;
-    }
-
-    public void setClassroomByIdClassroom(ClassroomDTO classroomByIdClassroom) {
-        this.classroomByIdClassroom = classroomByIdClassroom;
-    }
 }

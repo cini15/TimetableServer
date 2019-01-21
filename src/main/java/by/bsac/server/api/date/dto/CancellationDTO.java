@@ -15,13 +15,6 @@ public class CancellationDTO {
     private Date dateTo;
     private Date dateFrom;
 
-    public CancellationDTO(Integer idCancellation, Integer idRecord, Date dateTo, Date dateFrom) {
-        this.idCancellation = idCancellation;
-        this.idRecord = idRecord;
-        this.dateTo = dateTo;
-        this.dateFrom = dateFrom;
-    }
-
     public CancellationDTO(int idCancellation, int idRecord, Date dateTo, Date dateFrom) {
         this.idCancellation = idCancellation;
         this.idRecord = idRecord;

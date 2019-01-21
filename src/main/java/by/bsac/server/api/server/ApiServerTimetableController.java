@@ -6,14 +6,18 @@ import by.bsac.server.api.date.dto.ChairDTO;
 import by.bsac.server.api.date.dto.FacultyDTO;
 import by.bsac.server.api.date.dto.RecordDTO;
 import by.bsac.server.api.date.dto.SubjectDTO;
-import by.bsac.server.api.servise.TimetableServise;
+import by.bsac.server.api.date.entity.Faculty;
+import by.bsac.server.api.date.entity.Record;
+import by.bsac.server.api.service.TimetableServise;
 
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -24,10 +28,12 @@ public class ApiServerTimetableController {
 
     private TimetableServise timetable;
     private final TransformEntityToDTO toDTO;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public ApiServerTimetableController(TransformEntityToDTO toDTO) {
+    public ApiServerTimetableController(TransformEntityToDTO toDTO, ModelMapper modelMapper) {
         this.toDTO = toDTO;
+        this.modelMapper = modelMapper;
     }
 
     @Autowired()
@@ -45,12 +51,20 @@ public class ApiServerTimetableController {
     @GetMapping(value = "/faculty")
     public ResponseEntity<List<FacultyDTO>> facultyList(){
         log.debug("call function /FACULTY");
-        return ResponseEntity.ok().body(toDTO.getListFacultyDTO(timetable.getFacultyList()));
+        List<FacultyDTO> facultyDTOS=new ArrayList<>();
+        for (Faculty faculty:timetable.getFacultyList()) {
+            facultyDTOS.add(modelMapper.map(faculty,FacultyDTO.class));
+        }
+        return ResponseEntity.ok().body(facultyDTOS);
     }
     @GetMapping(value ="/records")
     public ResponseEntity<List<RecordDTO>> getRecordsList(){
         log.debug("call function /RECORDS");
-        return ResponseEntity.ok().body(toDTO.getListRecordDTO(timetable.getRecordsList()));
+        List<RecordDTO> recordDTOS=new ArrayList<>();
+        for (Record r :timetable.getRecordsList()) {
+            recordDTOS.add(modelMapper.map(r,RecordDTO.class));
+        }
+        return ResponseEntity.ok().body(recordDTOS);
     }
 
     @GetMapping(value ="/chairs")

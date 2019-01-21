@@ -54,7 +54,7 @@ public class Chair {
         return Objects.hash(idChair, nameChair);
     }
 
-    @OneToMany(mappedBy = "chairByIdChair",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "chairByIdChair",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @Fetch(value = FetchMode.SUBSELECT)
     public Collection<Lecturer> getLecturersByIdChair() {
         return lecturersByIdChair;
@@ -64,7 +64,7 @@ public class Chair {
         this.lecturersByIdChair = lecturersByIdChair;
     }
 
-    @OneToMany(mappedBy = "chairByIdChair",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "chairByIdChair",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @Fetch(value = FetchMode.SUBSELECT)
     public Collection<Subject> getSubjectsByIdChair() {
         return subjectsByIdChair;

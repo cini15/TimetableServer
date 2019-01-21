@@ -13,20 +13,13 @@ public class ChairDTO {
 
     private Byte idChair;
     private String nameChair;
-    @JsonProperty("lecturers")
-    private Collection<LecturerDTO> lecturersByIdChair;
 
-    public ChairDTO(Byte idChair, String nameChair, Collection<LecturerDTO> lecturersByIdChair) {
+
+    public ChairDTO(Byte idChair, String nameChair) {
         this.idChair = idChair;
         this.nameChair = nameChair;
-        this.lecturersByIdChair = lecturersByIdChair;
     }
 
-    public ChairDTO(byte idChair, String nameChair, Collection<LecturerDTO> lecturersByIdChair, Collection<SubjectDTO> subjectsByIdChair) {
-        this.idChair = idChair;
-        this.nameChair = nameChair;
-        this.lecturersByIdChair = lecturersByIdChair;
-    }
 
     public ChairDTO() {
     }
@@ -47,11 +40,4 @@ public class ChairDTO {
         this.nameChair = nameChair;
     }
 
-    public Collection<LecturerDTO> getLecturersByIdChair() {
-        return lecturersByIdChair;
-    }
-
-    public void setLecturersByIdChair(Collection<LecturerDTO> lecturersByIdChair) {
-        this.lecturersByIdChair = lecturersByIdChair;
-    }
 }

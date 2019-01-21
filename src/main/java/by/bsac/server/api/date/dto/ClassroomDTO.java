@@ -11,6 +11,7 @@ public class ClassroomDTO {
     private Short idClassroom;
     private Short number;
     private Byte building;
+
     public ClassroomDTO() {
     }
 

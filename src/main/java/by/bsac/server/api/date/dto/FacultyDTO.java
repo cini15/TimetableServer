@@ -12,16 +12,14 @@ import java.util.Collection;
 public class FacultyDTO {
     private Byte idFaculty;
     private String nameFaculty;
-    @JsonProperty("groups")
-    private Collection<GroupDTO> groupsByIdFaculty=new ArrayList<>();
 
     public FacultyDTO() {
     }
 
-    public FacultyDTO(byte idFaculty, String nameFaculty, Collection<GroupDTO> groupsByIdFaculty) {
+    public FacultyDTO(byte idFaculty, String nameFaculty) {
         this.idFaculty = idFaculty;
         this.nameFaculty = nameFaculty;
-        this.groupsByIdFaculty = groupsByIdFaculty;
+
     }
 
     public Byte getIdFaculty() {
@@ -40,11 +38,5 @@ public class FacultyDTO {
         this.nameFaculty = nameFaculty;
     }
 
-    public Collection<GroupDTO> getGroupsByIdFaculty() {
-        return groupsByIdFaculty;
-    }
 
-    public void setGroupsByIdFaculty(Collection<GroupDTO> groupsByIdFaculty) {
-        this.groupsByIdFaculty = groupsByIdFaculty;
-    }
 }

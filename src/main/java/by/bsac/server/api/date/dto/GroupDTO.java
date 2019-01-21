@@ -13,7 +13,7 @@ public class GroupDTO {
     private Short idFlow;
     private Byte idFaculty;
     private Byte eduLevel;
-    private FlowDTO flowByIdFlow;
+
 
     public Short getIdGroup() {
         return idGroup;
@@ -53,14 +53,6 @@ public class GroupDTO {
 
     public void setEduLevel(Byte eduLevel) {
         this.eduLevel = eduLevel;
-    }
-
-    public FlowDTO getFlowByIdFlow() {
-        return flowByIdFlow;
-    }
-
-    public void setFlowByIdFlow(FlowDTO flowByIdFlow) {
-        this.flowByIdFlow = flowByIdFlow;
     }
 
 }

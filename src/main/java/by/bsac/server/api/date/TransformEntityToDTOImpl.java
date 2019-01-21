@@ -11,8 +11,12 @@ import java.util.*;
 @Component
 public class TransformEntityToDTOImpl implements TransformEntityToDTO{
 
+    private final ModelMapper modelMapper;
+
     @Autowired
-    private ModelMapper modelMapper;
+    public TransformEntityToDTOImpl(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public  List<FacultyDTO> getListFacultyDTO(Collection<Faculty> faculties){

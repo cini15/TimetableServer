@@ -221,7 +221,7 @@ public class Record {
         this.lecturerByIdLecturer = lecturerByIdLecturer;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_subject_type", referencedColumnName = "id", nullable = false)
     public SubjectType getSubjectTypeByIdSubjectType() {
         return subjectTypeByIdSubjectType;
@@ -231,7 +231,7 @@ public class Record {
         this.subjectTypeByIdSubjectType = subjectTypeByIdSubjectType;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_subject_for", referencedColumnName = "id", nullable = false)
     public SubjectFor getSubjectForByIdSubjectFor() {
         return subjectForByIdSubjectFor;
@@ -241,7 +241,7 @@ public class Record {
         this.subjectForByIdSubjectFor = subjectForByIdSubjectFor;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_classroom", referencedColumnName = "id_classroom", nullable = false)
     public Classroom getClassroomByIdClassroom() {
         return classroomByIdClassroom;
